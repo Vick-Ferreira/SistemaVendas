@@ -66,7 +66,7 @@ function showProdutos(){
                 console.log('ID da linha:', id); // Recupera o ID da linha
                 console.log('clicado no botão de Add ao carrinho', id);
                 addProdutoCarrinho( id, item.metadata.nome, item.metadata.preco, item.metadata.categoria, item.metadata.quantidade, imgSrc.src); // Passa o ID para a função de edição
-                window.location.href = 'carrinho.html'
+                //window.location.href = 'carrinho.html'
                 
             };
             card.appendChild(buttonEdit);
@@ -79,7 +79,8 @@ function showProdutos(){
 
 
 function addProdutoCarrinho(id, nome, preco, categoria, quantidade, imgSrc) {
-    fetch('http://localhost:3000/carrinho/addProdutosCarrinho', {
+    console.log("função addProdutoCarrinho")
+    fetch('http://localhost:3000/carrinho/addProdutoCarrinho', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -102,7 +103,26 @@ function addProdutoCarrinho(id, nome, preco, categoria, quantidade, imgSrc) {
     .then(data => {
         console.log('Produto adicionado ao carrinho com sucesso:', data);
         // Atualize a interface do usuário ou faça outra ação conforme necessário
-        mostrarCarrinho(); // Função para atualizar a visualização do carrinho
+        
+
+        // AO ADD AO CARRINHO UM PRODUTO (SUBTRAI, 1 DA  QUANTIDADE DO ESTOQUE)
+        fetch(`http://localhost:3000/produto/atualizarQuantidade/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                quantidadeVendida: 1 // Usa a quantidade fornecida
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('Quantidade atualizada:', data);
+        })
+        .catch(error => {
+            console.error('Erro ao atualizar a quantidade:', error);
+        });
+        showProdutos();
     })
     .catch(error => {
         console.error('Erro ao adicionar produto ao carrinho:', error);

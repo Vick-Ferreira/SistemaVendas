@@ -6,7 +6,7 @@ const carrinhoSchema = new mongoose.Schema({
     nome: String,
     preco: String,
     categoria: String,
-    quantidade: String,
+    quantidade: Number,
     imgSrc: String
 });
 
