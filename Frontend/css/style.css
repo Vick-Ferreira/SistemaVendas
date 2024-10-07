@@ -1,4 +1,126 @@
 @charset "UTF-8";
-form {
-  display: none; /* Ocultar o formulário por padrão */
+.blocoForm {
+  max-width: 500px;
+  margin: auto;
+  padding-top: 150px;
+}
+.blocoForm .form {
+  /* Ocultar o formulário por padrão*/
+  display: none;
+  background-color: aquamarine;
+  border-radius: 15px;
+}
+.blocoForm .form .btn {
+  background-color: rgb(95, 146, 129);
+  border-radius: 2px;
+  color: white;
+  border: none;
+}
+.blocoForm .form .btn:hover {
+  border: solid 1px white;
+}
+
+.navbar {
+  position: fixed !important;
+  flex-direction: column;
+  background-color: aquamarine;
+  width: 200px;
+  height: 100vh;
+  z-index: 1000; /* Aumenta o z-index para ficar acima de outros elementos */
+}
+.navbar .nav-link {
+  margin-bottom: 20px;
+}
+
+.abertura {
+  background-color: aquamarine;
+  border-radius: 15px;
+}
+
+.abertura img {
+  height: 200px;
+}
+
+.pg-abertura {
+  margin: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inputQtd {
+  text-align: center;
+  margin: 5px 80px;
+}
+
+input {
+  border-radius: 5px !important;
+}
+
+.btn {
+  background-color: rgb(95, 146, 129);
+  border-radius: 2px;
+  color: white;
+}
+.btn:hover {
+  border: solid 1px white;
+}
+
+.containerTable {
+  display: none;
+}
+
+.tableAdmin,
+.tableVendedor {
+  padding: 25px;
+  height: 50px;
+  text-align: center;
+  border: solid 3px black;
+}
+
+.buttonEdit,
+.buttonDelet,
+.buttonAddCarrinho {
+  border: solid 2px rgb(114, 106, 106) !important;
+  margin: 5px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.card-container .card {
+  max-width: 350px;
+  margin: 15px;
+  text-align: center;
+  padding: 25px;
+  width: 300px;
+}
+.card-container .card .card-img-top img {
+  width: 96px;
+  height: 96px;
+}
+
+.btn_modal {
+  background-color: red;
+}
+
+@media (min-width: 768px) {
+  .pg-abertura {
+    position: absolute;
+    right: 100px;
+    top: 100px;
+    width: 500px !important;
+    margin: 0;
+  }
+}
+@media (min-width: 1200px) {
+  .container.containerTable {
+    width: 990px !important;
+  }
+  .navbar {
+    position: fixed;
+  }
 }/*# sourceMappingURL=style.css.map */
